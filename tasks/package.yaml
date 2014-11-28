@@ -1,0 +1,13 @@
+---
+
+- name: Install sudo for Debian
+  apt:
+    pkg: sudo
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Install sudo for RedHat
+  yum:
+    name: sudo
+    state: present
+  when: ansible_os_family == "RedHat"
