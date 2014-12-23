@@ -1,5 +1,11 @@
 ---
 
+- name: Test distribution
+  assert:
+    that: >
+      ansible_os_family == "RedHat" or
+      ansible_os_family == "Debian"
+
 - include: package.yaml
 
 - name: Create /etc/sudoers file

@@ -2,7 +2,7 @@
 
 - name: Install sudo for Debian
   apt:
-    pkg: sudo
+    name: sudo
     state: present
   when: ansible_os_family == "Debian"
 
