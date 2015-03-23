@@ -5,9 +5,13 @@
     name: sudo
     state: present
   when: ansible_os_family == "Debian"
+  tags:
+    - sudo_pkg
 
 - name: Install sudo for RedHat
   yum:
     name: sudo
     state: present
   when: ansible_os_family == "RedHat"
+  tags:
+    - sudo_pkg
