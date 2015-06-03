@@ -50,13 +50,13 @@
 {%- if sudo_include -%}
   {{ "\n" }}# File includes{{ "\n" }}
   {%- for item in sudo_include -%}
-    #include {{ item }}{{ "\n" }}
+    include {{ item }}{{ "\n" }}
   {%- endfor %}
 {% endif %}
 
 {%- if sudo_includedir -%}
   {{ "\n" }}# Directory includes{{ "\n" }}
   {%- for item in sudo_includedir -%}
-    #includedir {{ item }}{{ "\n" }}
+    includedir {{ item }}{{ "\n" }}
   {%- endfor %}
 {% endif %}
