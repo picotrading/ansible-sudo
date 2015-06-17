@@ -15,6 +15,6 @@
     owner: root
     group: root
     mode: 0440
-    validate: visudo -cf %s
+    validate: "{{ sudo_visudo }} -cf %s"
   tags:
     - sudo_config

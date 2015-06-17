@@ -1,5 +1,8 @@
 ---
 
+# Default path to the visudo
+sudo_visudo: /usr/sbin/visudo
+
 # Default host aliases
 sudo_host_alias: {}
 #sudo_host_alias:
