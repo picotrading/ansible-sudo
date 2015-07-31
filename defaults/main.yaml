@@ -1,32 +1,38 @@
 ---
 
 # Default path to the visudo
-sudo_visudo: /usr/sbin/visudo
+sudo_visudo: '/usr/sbin/visudo'
 
 # Default host aliases
 sudo_host_alias: {}
-#sudo_host_alias:
-#  FILESERVERS:
-#    - fs1
-#    - fs2
-#  MAILSERVERS:
-#    - smtp
-#    - smtp2
+# sudo_host_alias:
+#   FILESERVERS:
+#     - fs1
+#     - fs2
+#   MAILSERVERS:
+#     - smtp
+#     - smtp2
+
+sudo_host_alias_group: {}
+sudo_host_alias_host: {}
 
 # Default user aliases
 sudo_user_alias: {}
-#sudo_user_alias:
-#  ADMINS:
-#    - jsmith
-#    - mikem
-#  WEBMASTERS:
-#    - peter
-#    - lisa
+# sudo_user_alias:
+#   ADMINS:
+#     - jsmith
+#     - mikem
+#   WEBMASTERS:
+#     - peter
+#     - lisa
+
+sudo_user_alias_group: {}
+sudo_user_alias_host: {}
 
 # Default command aliases
 sudo_cmd_alias: {}
 #sudo_cmd_alias:
-#  SOFTWARE
+#  SOFTWARE:
 #    - /bin/rpm
 #    - /usr/bin/up2date
 #    - /usr/bin/yum
@@ -34,18 +40,25 @@ sudo_cmd_alias: {}
 #    - /sbin/service
 #    - /sbin/chkconfig
 
+sudo_cmd_alias_group: {}
+sudo_cmd_alias_host: {}
+
 # Default sudo defaults
 sudo_defaults:
-  - requiretty
+  - 'requiretty'
   - '!visiblepw'
-  - always_set_home
-  - env_reset
-  - env_keep  = "COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR LS_COLORS"
-  - env_keep += "MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE"
-  - env_keep += "LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES"
-  - env_keep += "LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE"
-  - env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"
-  - secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+  # - 'insults'
+  - 'always_set_home'
+  - 'env_reset'
+  - 'env_keep  = "COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR LS_COLORS"'
+  - 'env_keep += "MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE"'
+  - 'env_keep += "LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES"'
+  - 'env_keep += "LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE"'
+  - 'env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"'
+  - 'secure_path = "/sbin:/bin:/usr/sbin:/usr/bin"'
+
+sudo_defaults_group: []
+sudo_defaults_host: []
 
 # Default sudo users
 sudo_users:
@@ -54,6 +67,11 @@ sudo_users:
       runas: ALL
       tag: ''
       cmd: ALL
+#   - '%sudo':
+#       host: ALL
+#       runas: ALL
+#       tag: ''
+#       cmd: ALL
 #  - '%wheel':
 #      host: ALL
 #      runas: ALL
@@ -70,6 +88,9 @@ sudo_users:
 #      tag: ''
 #      cmd: SOFTWARE, SERVICES
 
+sudo_users_group: []
+sudo_users_host: []
+
 # Default file includes
 sudo_include: []
 #sudo_include:
@@ -78,3 +99,7 @@ sudo_include: []
 # Default directory includes
 sudo_includedir:
   - /etc/sudoers.d
+
+
+sudo_package:
+  - sudo

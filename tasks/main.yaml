@@ -2,19 +2,30 @@
 
 - name: Test distribution
   assert:
-    that: >
-      ansible_os_family == "RedHat" or
-      ansible_os_family == "Debian"
+    that:
+      ansible_os_family in [
+          'RedHat',
+          'Debian',
+          'Ubuntu',
+          'Linuxmint',
+      ]
 
 - include: package.yaml
+  tags:
+    - sudo_pkg
+
+- name: Combine definition lists
+  set_fact:
+    sudo_defaults_combined: '{{ sudo_defaults + sudo_defaults_group + sudo_defaults_host | default([]) }}'
+    sudo_users_combined: '{{ sudo_users + sudo_users_group + sudo_users_host | default([]) }}'
 
 - name: Create /etc/sudoers file
   template:
-    src: sudoers.j2
-    dest: /etc/sudoers
-    owner: root
-    group: root
-    mode: 0440
-    validate: "{{ sudo_visudo }} -cf %s"
+    src: 'sudoers.j2'
+    dest: '/etc/sudoers'
+    owner: 'root'
+    group: 'root'
+    mode: 0640
+    validate: '{{ sudo_visudo }} -cf %s'
   tags:
     - sudo_config
