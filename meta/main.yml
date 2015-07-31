@@ -12,6 +12,12 @@ galaxy_info:
     - name: Debian
       versions:
         - all
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Linuxmint
+      versions:
+        - all
   categories:
     - system
 dependencies: []
